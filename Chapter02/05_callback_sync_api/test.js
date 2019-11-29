@@ -6,7 +6,7 @@ function consistentReadSync(filename) {
   if(cache[filename]) {
     return cache[filename];
   } else {
-    cache[filename] = fs.readFileSync(filename, 'utf8');
+    cache[filename] = fs.readFileSync(filename);
     return cache[filename];
   }
 }
@@ -14,3 +14,5 @@ function consistentReadSync(filename) {
 console.log(consistentReadSync('data.txt'));
 // the next call will read from the cache
 console.log(consistentReadSync('data.txt'));
+
+console.log(typeof cache["data.txt"]);

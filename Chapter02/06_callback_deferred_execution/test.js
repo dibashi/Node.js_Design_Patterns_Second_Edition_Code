@@ -3,7 +3,7 @@
 const fs = require('fs');
 const cache = {};
 function consistentReadAsync(filename, callback) {
-  if(cache[filename]) {
+  if (cache[filename]) {
     process.nextTick(() => callback(cache[filename]));
   } else {
     //asynchronous function
@@ -18,4 +18,5 @@ consistentReadAsync('data.txt', (data) => {
   console.log(data);
   // the next call will read from the cache but still be async
   consistentReadAsync('data.txt', (data) => console.log(data));
+  console.log("测下");
 });
